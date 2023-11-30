@@ -1,0 +1,1 @@
+let sex = confirm("Are you a man?") ? alert ("You are a man") : alert ("You are a woman") 
