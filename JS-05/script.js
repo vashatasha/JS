@@ -202,3 +202,13 @@ const togetherBeep = transformedWords.join(' ');
 
 alert (togetherBeep);
 
+// Reduce HTML
+
+let choice = "<select>"
+choice += currencies.reduce((add, currency) => {
+  return add + `<option>${currency}</option>`;
+}, "");
+
+choice += "</select>";
+
+document.write(choice)
