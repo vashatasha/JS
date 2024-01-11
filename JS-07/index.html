@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- <script src="script.js"></script> -->
+    <input type='number' id="firstNumber" placeholder="Введіть чисельник"/>
+    <input type='number' id="secondNumber" placeholder="Введіть знаменник"/>
+    <div id="divisionResult">
+    Результат ділення чисел<br/>
+    </div>
+
+
+<label for="salary">Введіть суму вашої заробітньої плати в долларі:</label>
+<br/>
+<input type='number' id="salary"/>
+<br/>
+<label for="percentage ">Введіть бажаний процент від суми заробітньої плати, що ви хотіли б заощаджувати</label>
+<br/>
+<input type='number' id="percentage"/>
+<br/>
+<button onclick="calculateSavings()">Calculate Savings</button>
+
+<div id="result"></div>
+<script>
+    const calcResult = () => {
+        const firstValue = parseFloat(firstNumber.value);
+        const secondValue = parseFloat(secondNumber.value);
+
+        if (!isNaN(firstValue) && !isNaN(secondValue) && secondValue !== 0) {
+            const result = firstValue / secondValue;
+            divisionResult.innerHTML = `Результат ділення: ${result.toFixed(2)}`;
+        } else {
+            divisionResult.innerHTML = "Помилка: некоректні дані для ділення";
+        }
+    }
+    
+    firstNumber.oninput = secondNumber.oninput = calcResult;
+
+    function calculate(salary, percentage) {
+      let savings = salary * percentage * 12 / 100;
+      return savings;
+    }
+
+    function calculateSavings() {
+      let salaryInput = document.getElementById('salary');
+      let percentageInput = document.getElementById('percentage');
+      let resultDiv = document.getElementById('result');
+
+      let salary = parseFloat(salaryInput.value);
+      let percentage = parseFloat(percentageInput.value);
+
+      if (isNaN(salary) || isNaN(percentage)) {
+        resultDiv.textContent = 'Please enter valid numerical values for salary and percentage.';
+      } else {
+        let savings = calculate(salary, percentage);
+        resultDiv.textContent = `Your savings will be $${savings.toFixed(2)} per one year!`;
+      }
+    }
+</script>
+</body>
+</html>
